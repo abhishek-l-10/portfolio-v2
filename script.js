@@ -42,6 +42,31 @@ document.addEventListener("DOMContentLoaded", () => {
   const heroSection = document.getElementById("hero-section");
   const mainContent = document.getElementById("main-content");
   const mainHeader = document.getElementById("main-header");
+  const logoutBtn = document.querySelector(
+    'button:has(svg[stroke-linecap="round"])'
+  );
+
+  // Add logout functionality
+  logoutBtn.addEventListener("click", () => {
+    // Reset the form inputs
+    accessCodeInput.value = "";
+    userNameInput.value = "";
+
+    // Show hero section and hide main content
+    heroSection.classList.remove("hidden");
+    mainContent.classList.add("hidden");
+    mainHeader.classList.add("hidden");
+
+    // Show logout notification
+    Swal.fire({
+      icon: "success",
+      title: "Logged Out Successfully",
+      text: "Thank you for using English Janala!",
+      confirmButtonColor: "#8b5cf6",
+      timer: 2000,
+      showConfirmButton: false,
+    });
+  });
 
   getStartedBtn.addEventListener("click", () => {
     const accessCode = accessCodeInput.value;
@@ -344,11 +369,8 @@ async function showWordDetails(id) {
       
       <div class="mt-10" id="close-modal">
         <button class="complete-learning-btn w-auto mr-auto flex items-center justify-center gap-2 px-6 py-3 rounded-md bg-violet-600 text-white font-medium hover:bg-violet-700 transition-colors poppins-font">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5">
-            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-            <polyline points="22 4 12 14.01 9 11.01"></polyline>
-          </svg>
-          Complete Learning
+          <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+          close
         </button>
       </div>
     `;
