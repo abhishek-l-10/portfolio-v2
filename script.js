@@ -1,3 +1,71 @@
+document.addEventListener("DOMContentLoaded", () => {
+  const mobileMenuButton = document.getElementById("mobile-menu-button");
+  const mobileMenu = document.getElementById("mobile-menu");
+
+  let isMenuOpen = false;
+
+  mobileMenuButton.addEventListener("click", (e) => {
+    e.stopPropagation();
+    isMenuOpen = !isMenuOpen;
+
+    if (isMenuOpen) {
+      mobileMenu.classList.remove("hidden");
+      mobileMenu.classList.add("show");
+    } else {
+      mobileMenu.classList.remove("show");
+      mobileMenu.classList.add("hidden");
+    }
+
+    mobileMenuButton.innerHTML = isMenuOpen
+      ? `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+         </svg>`
+      : `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+         </svg>`;
+  });
+
+  document.addEventListener("click", (e) => {
+    if (
+      isMenuOpen &&
+      !mobileMenu.contains(e.target) &&
+      !mobileMenuButton.contains(e.target)
+    ) {
+      mobileMenu.classList.remove("show");
+      mobileMenu.classList.add("hidden");
+      isMenuOpen = false;
+      mobileMenuButton.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>`;
+    }
+  });
+
+  const menuItems = mobileMenu.querySelectorAll("a, button");
+  menuItems.forEach((item) => {
+    item.addEventListener("click", () => {
+      if (window.innerWidth < 768) {
+        mobileMenu.classList.remove("show");
+        mobileMenu.classList.add("hidden");
+        isMenuOpen = false;
+        mobileMenuButton.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>`;
+      }
+    });
+  });
+
+  window.addEventListener("resize", () => {
+    if (window.innerWidth >= 768 && isMenuOpen) {
+      mobileMenu.classList.remove("show");
+      mobileMenu.classList.remove("hidden");
+      isMenuOpen = false;
+      mobileMenuButton.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>`;
+    }
+  });
+});
+
 //accordion
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -46,18 +114,14 @@ document.addEventListener("DOMContentLoaded", () => {
     'button:has(svg[stroke-linecap="round"])'
   );
 
-  // Add logout functionality
   logoutBtn.addEventListener("click", () => {
-    // Reset the form inputs
     accessCodeInput.value = "";
     userNameInput.value = "";
 
-    // Show hero section and hide main content
     heroSection.classList.remove("hidden");
     mainContent.classList.add("hidden");
     mainHeader.classList.add("hidden");
 
-    // Show logout notification
     Swal.fire({
       icon: "success",
       title: "Logged Out Successfully",
@@ -313,18 +377,32 @@ function displayVocabularyForLevel(vocabularyData) {
   });
 }
 
-// Function to show word details in modal
 async function showWordDetails(id) {
   try {
-    const response = await fetch(
-      `https://openapi.programming-hero.com/api/word/${id}`
-    );
-    const result = await response.json();
-    const wordData = result.data;
-
     const modal = document.getElementById("word-modal");
     const modalContent = modal.querySelector(".bg-white");
     const wordDetails = document.getElementById("word-details");
+
+    wordDetails.innerHTML = `
+      <div class="flex items-center justify-center p-8">
+        <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-violet-600"></div>
+        <span class="ml-2 text-violet-600 poppins-font">Loading details...</span>
+      </div>
+    `;
+
+    modal.classList.remove("hidden");
+    modal.classList.add("flex");
+    modalContent.classList.remove("scale-90", "opacity-0");
+    modalContent.classList.add("scale-100", "opacity-100");
+
+    const response = await fetch(
+      `https://openapi.programming-hero.com/api/word/${id}`
+    );
+    if (!response.ok) {
+      throw new Error("Failed to fetch word details");
+    }
+    const result = await response.json();
+    const wordData = result.data;
 
     const word = wordData.word || "Unknown";
     const pronunciation =
@@ -375,78 +453,52 @@ async function showWordDetails(id) {
             }
           </div>
         </div>
-      
       </div>
       
-      <div class="mt-10" id="close-modal">
+      <div class="mt-10">
         <button class="complete-learning-btn w-auto mr-auto flex items-center justify-center gap-2 px-6 py-3 rounded-md bg-violet-600 text-white font-medium hover:bg-violet-700 transition-colors poppins-font">
           <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
-          close
+          Complete Learning
         </button>
       </div>
     `;
 
+    // Add pronunciation functionality
     const pronunciationIcon = modal.querySelector(".pronunciation-icon");
     if (pronunciationIcon) {
       pronunciationIcon.addEventListener("click", () => {
-        console.log("Pronunciation icon clicked");
-
         if (!window.speechSynthesis) {
-          console.error("Speech synthesis not supported in this browser");
+          Swal.fire({
+            icon: "error",
+            title: "Speech Synthesis Not Supported",
+            text: "Your browser doesn't support text-to-speech functionality.",
+            confirmButtonColor: "#8b5cf6",
+          });
           return;
         }
 
-        const word = wordData.word;
-        console.log("Word to pronounce:", word);
-
-        const voices = window.speechSynthesis.getVoices();
         const utterance = new SpeechSynthesisUtterance(word);
-
-        const englishVoice = voices.find((voice) => voice.lang.includes("en"));
-        if (englishVoice) {
-          utterance.voice = englishVoice;
-        }
-
         utterance.lang = "en-US";
         utterance.rate = 0.8;
         utterance.pitch = 1;
         utterance.volume = 1;
 
         pronunciationIcon.classList.add("text-violet-600");
-
-        utterance.onstart = () => {
-          console.log("Speech started");
-        };
-
         utterance.onend = () => {
-          console.log("Speech ended");
-          pronunciationIcon.classList.remove("text-violet-600");
-        };
-
-        utterance.onerror = (event) => {
-          console.error("Speech error:", event);
           pronunciationIcon.classList.remove("text-violet-600");
         };
 
         window.speechSynthesis.cancel();
         window.speechSynthesis.speak(utterance);
       });
-
-      if (window.speechSynthesis) {
-        window.speechSynthesis.onvoiceschanged = () => {
-          const voices = window.speechSynthesis.getVoices();
-          console.log("Available voices:", voices.length);
-        };
-      }
     }
 
-    modal.classList.remove("hidden");
-    modal.classList.add("flex");
-
-    setTimeout(() => {
-      modalContent.classList.remove("scale-90", "opacity-0");
-      modalContent.classList.add("scale-100", "opacity-100");
-    }, 10);
+    const handleKeyDown = (e) => {
+      if (e.key === "Escape") {
+        closeModal();
+      }
+    };
+    document.addEventListener("keydown", handleKeyDown);
 
     const closeButton = document.getElementById("close-modal");
     const completeLearningBtn = modal.querySelector(".complete-learning-btn");
@@ -454,6 +506,7 @@ async function showWordDetails(id) {
     const closeModal = () => {
       modalContent.classList.remove("scale-100", "opacity-100");
       modalContent.classList.add("scale-90", "opacity-0");
+      document.removeEventListener("keydown", handleKeyDown);
 
       setTimeout(() => {
         modal.classList.remove("flex");
@@ -471,6 +524,12 @@ async function showWordDetails(id) {
     };
   } catch (error) {
     console.error("Error fetching word details:", error);
+    Swal.fire({
+      icon: "error",
+      title: "Error Loading Details",
+      text: "There was an error loading the word details. Please try again.",
+      confirmButtonColor: "#8b5cf6",
+    });
   }
 }
 

@@ -65,6 +65,45 @@
         background-color: rgba(0, 0, 0, 0.5);
         transition: opacity 0.3s ease-out;
       }
+
+      /* Mobile Menu Styles */
+      @media (max-width: 767px) {
+        #mobile-menu {
+          display: none;
+          transition: all 0.3s ease-in-out;
+          padding: 1rem 0;
+          background: white;
+          width: 100%;
+        }
+
+        #mobile-menu.show {
+          display: flex;
+          flex-direction: column;
+          gap: 1rem;
+        }
+
+        #mobile-menu a,
+        #mobile-menu button {
+          width: 100%;
+          padding: 0.75rem 1rem;
+          text-align: left;
+          border: none;
+          border-radius: 0;
+        }
+
+        #mobile-menu a:hover,
+        #mobile-menu button:hover {
+          background-color: #eef2ff;
+        }
+      }
+
+      @media (min-width: 768px) {
+        #mobile-menu {
+          display: flex !important;
+          flex-direction: row;
+          gap: 1rem;
+        }
+      }
     </style>
   </head>
 
@@ -79,12 +118,39 @@
             <div
               class="flex flex-col md:flex-row justify-between items-center gap-4"
             >
-              <div class="flex items-center">
-                <span class="text-2xl font-bold poppins-font">English</span>
-                <img src="./assets/logo.png" alt="" />
-                <span class="text-2xl font-bold bangla-font">জানালা</span>
+              <div class="w-full md:w-auto flex justify-between items-center">
+                <a href="/">
+                  <div class="flex items-center">
+                    <span class="text-2xl font-bold poppins-font">English</span>
+                    <img src="./assets/logo.png" alt="" />
+                    <span class="text-2xl font-bold bangla-font">জানালা</span>
+                  </div>
+                </a>
+                <button
+                  id="mobile-menu-button"
+                  class="md:hidden text-gray-500 hover:text-gray-700 focus:outline-none"
+                  aria-label="Toggle menu"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-6 w-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M4 6h16M4 12h16M4 18h16"
+                    />
+                  </svg>
+                </button>
               </div>
-              <div class="flex flex-wrap items-center justify-center gap-4">
+              <div
+                id="mobile-menu"
+                class="hidden w-full md:flex md:w-auto flex-col md:flex-row items-center justify-center gap-4"
+              >
                 <a
                   href="#faq-container-section"
                   class="w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-2 rounded-md border-2 border-indigo-600 text-indigo-600 font-medium hover:bg-indigo-50 transition-colors"
@@ -105,7 +171,7 @@
                     <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
                     <path d="M12 17h.01"></path>
                   </svg>
-                  FAQ
+                  <span>FAQ</span>
                 </a>
                 <a
                   href="#lesson-container-section"
@@ -126,7 +192,7 @@
                     <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
                     <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
                   </svg>
-                  Learn
+                  <span>Learn</span>
                 </a>
                 <button
                   class="w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-2 rounded-md border-2 border-indigo-600 text-indigo-600 font-medium hover:bg-indigo-50 transition-colors"
@@ -147,7 +213,7 @@
                     <polyline points="16 17 21 12 16 7"></polyline>
                     <line x1="21" y1="12" x2="9" y2="12"></line>
                   </svg>
-                  Logout
+                  <span>Logout</span>
                 </button>
               </div>
             </div>
