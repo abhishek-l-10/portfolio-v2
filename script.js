@@ -35,7 +35,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Get Started button functionality
   const getStartedBtn = document.getElementById("get-started-btn");
   const accessCodeInput = document.getElementById("access-code");
   const userNameInput = document.getElementById("user-name");
@@ -49,12 +48,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const userName = userNameInput.value.trim();
 
     if (accessCode === "123456") {
-      // Hide hero section and show main content
       heroSection.classList.add("hidden");
       mainContent.classList.remove("hidden");
       mainHeader.classList.remove("hidden");
 
-      // Show welcome message
       Swal.fire({
         icon: "success",
         title: `Welcome!`,
@@ -64,7 +61,6 @@ document.addEventListener("DOMContentLoaded", () => {
         showConfirmButton: false,
       });
 
-      // Initialize the app only when user successfully logs in
       initializeApp();
     } else {
       Swal.fire({
@@ -77,7 +73,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // Add enter key support for the form
   [userNameInput, accessCodeInput].forEach((input) => {
     input.addEventListener("keypress", (e) => {
       if (e.key === "Enter") {
@@ -86,16 +81,13 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Remove the error message hiding on input since we're using SweetAlert2 now
   accessCodeInput.removeEventListener("input", () => {
     errorMessage.classList.add("hidden");
   });
 });
 
-// Function to initialize the app after successful login
 async function initializeApp() {
   try {
-    // Show loading state
     const lessonContainer = document.getElementById("lesson-container");
     lessonContainer.innerHTML = `
       <div class="flex items-center justify-center w-full">
@@ -104,10 +96,8 @@ async function initializeApp() {
       </div>
     `;
 
-    // Fetch and display labels
     await displayLabels();
 
-    // Display initial vocabulary state
     displayVocabulary();
   } catch (error) {
     console.error("Error initializing app:", error);
@@ -142,7 +132,6 @@ async function displayLabels() {
   const lessonContainer = document.getElementById("lesson-container");
   const data = await getLabel();
 
-  // Use join to concatenate all the HTML strings
   lessonContainer.innerHTML = data
     .map((lesson) => {
       return `
@@ -156,12 +145,10 @@ async function displayLabels() {
     })
     .join("");
 
-  // Add event listeners after the buttons are created
   const lessonButtons = document.querySelectorAll(".lesson-button");
   lessonButtons.forEach((button) => {
     button.addEventListener("click", async () => {
       try {
-        // Show loading state for the vocabulary container
         const vocabularyContainer = document.getElementById(
           "vocabulary-container"
         );
@@ -183,10 +170,8 @@ async function displayLabels() {
         }
         const data = await response.json();
 
-        // Display the vocabulary data for this level
         displayVocabularyForLevel(data.data);
 
-        // Highlight the selected lesson button
         lessonButtons.forEach((btn) => {
           btn.classList.remove("bg-violet-100");
         });
@@ -223,7 +208,6 @@ function displayVocabularyForLevel(vocabularyData) {
 
   vocabularyContainer.innerHTML = vocabularyData
     .map((item) => {
-      // Handle cases where properties might be missing
       const word = item.word || "Unknown";
       const meaning = item.meaning || "No meaning available";
       const pronunciation = item.pronunciation || "No pronunciation available";
@@ -277,20 +261,18 @@ function displayVocabularyForLevel(vocabularyData) {
   pronunciationButtons.forEach((button) => {
     button.addEventListener("click", () => {
       const word = button.getAttribute("data-word");
-      // Create speech synthesis utterance
+
       const utterance = new SpeechSynthesisUtterance(word);
-      utterance.rate = 0.8; // Slightly slower rate for better clarity
+      utterance.rate = 0.8;
       utterance.pitch = 1;
       utterance.volume = 1;
       utterance.lang = "en-US";
 
-      // Add visual feedback while speaking
       button.classList.add("text-violet-600");
       utterance.onend = () => {
         button.classList.remove("text-violet-600");
       };
 
-      // Speak the word
       window.speechSynthesis.speak(utterance);
     });
   });
@@ -371,43 +353,34 @@ async function showWordDetails(id) {
       </div>
     `;
 
-    // Add pronunciation icon event listener after HTML is inserted
     const pronunciationIcon = modal.querySelector(".pronunciation-icon");
     if (pronunciationIcon) {
       pronunciationIcon.addEventListener("click", () => {
-        // Debug log
         console.log("Pronunciation icon clicked");
 
-        // Check if speech synthesis is available
         if (!window.speechSynthesis) {
           console.error("Speech synthesis not supported in this browser");
           return;
         }
 
-        // Get both word and pronunciation
         const word = wordData.word;
         console.log("Word to pronounce:", word);
 
-        // Initialize speech synthesis
         const voices = window.speechSynthesis.getVoices();
         const utterance = new SpeechSynthesisUtterance(word);
 
-        // Set voice to first English voice if available
         const englishVoice = voices.find((voice) => voice.lang.includes("en"));
         if (englishVoice) {
           utterance.voice = englishVoice;
         }
 
-        // Configure speech settings
         utterance.lang = "en-US";
         utterance.rate = 0.8;
         utterance.pitch = 1;
         utterance.volume = 1;
 
-        // Visual feedback
         pronunciationIcon.classList.add("text-violet-600");
 
-        // Speech events
         utterance.onstart = () => {
           console.log("Speech started");
         };
@@ -422,14 +395,11 @@ async function showWordDetails(id) {
           pronunciationIcon.classList.remove("text-violet-600");
         };
 
-        // Speak
-        window.speechSynthesis.cancel(); // Cancel any ongoing speech
+        window.speechSynthesis.cancel();
         window.speechSynthesis.speak(utterance);
       });
 
-      // Initialize voices
       if (window.speechSynthesis) {
-        // Chrome needs this to load voices
         window.speechSynthesis.onvoiceschanged = () => {
           const voices = window.speechSynthesis.getVoices();
           console.log("Available voices:", voices.length);
@@ -437,26 +407,21 @@ async function showWordDetails(id) {
       }
     }
 
-    // Show modal with animation
     modal.classList.remove("hidden");
     modal.classList.add("flex");
 
-    // Animate modal in
     setTimeout(() => {
       modalContent.classList.remove("scale-90", "opacity-0");
       modalContent.classList.add("scale-100", "opacity-100");
     }, 10);
 
-    // Add close button functionality
     const closeButton = document.getElementById("close-modal");
     const completeLearningBtn = modal.querySelector(".complete-learning-btn");
 
     const closeModal = () => {
-      // Animate modal out
       modalContent.classList.remove("scale-100", "opacity-100");
       modalContent.classList.add("scale-90", "opacity-0");
 
-      // Hide modal after animation
       setTimeout(() => {
         modal.classList.remove("flex");
         modal.classList.add("hidden");
@@ -466,7 +431,6 @@ async function showWordDetails(id) {
     closeButton.onclick = closeModal;
     completeLearningBtn.onclick = closeModal;
 
-    // Close modal when clicking outside
     modal.onclick = (e) => {
       if (e.target === modal) {
         closeModal();
@@ -493,7 +457,6 @@ async function displayVocabulary() {
   `;
 }
 
-// Call the function to display vocabulary
 displayVocabulary();
 
 //faq
