@@ -7,7 +7,7 @@ import { FlipWords } from "../../components/ui/flip-words";
 import { BackgroundBeamsWithCollision } from "@/components/ui/background-beams-with-collision";
 import { Button } from "../../components/ui/moving-border";
 import { ShootingStars } from "../../components/ui/shooting-stars";
-import config from "../../config/config";
+import config from "@/config/config";
 import { ArrowRightIcon } from "lucide-react";
 
 export default function Hero() {
