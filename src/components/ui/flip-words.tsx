@@ -1,5 +1,4 @@
-"use client";
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion, LayoutGroup } from "motion/react";
 import { cn } from "@/lib/utils";
 
