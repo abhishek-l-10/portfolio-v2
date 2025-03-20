@@ -1,4 +1,3 @@
-import React from "react";
 import { Github, ExternalLink } from "lucide-react";
 import olova from "@/assets/projects/olova-B0FjVVEL.png";
 import portfolio from "@/assets/projects/Annotation 2025-03-20 155334.png";

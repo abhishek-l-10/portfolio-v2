@@ -66,12 +66,7 @@ export const BackgroundBeamsWithCollision = ({
   ];
 
   return (
-    <div
-      ref={parentRef}
-      className={cn(
-        className
-      )}
-    >
+    <div className={cn("relative z-0 overflow-hidden", className)}>
       {beams.map((beam) => (
         <CollisionMechanism
           key={beam.initialX + "beam-idx"}

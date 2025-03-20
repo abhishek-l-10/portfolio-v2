@@ -2,7 +2,6 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { useTheme } from "@/provider/page";
 import { Marquee } from "@/components/magicui/marquee";
-import { cn } from "@/lib/utils";
 import {
   Code2,
   Paintbrush,
@@ -13,7 +12,6 @@ import {
   Sparkles,
   Layers,
   GitBranch,
-  Terminal,
   Server,
   Globe,
   FileCode,

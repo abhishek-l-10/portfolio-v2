@@ -1,10 +1,6 @@
-import {
-  useMotionValueEvent,
-  useScroll,
-  useTransform,
-  motion,
-} from "motion/react";
-import React, { useEffect, useRef, useState } from "react";
+import { useRef, useEffect } from "react";
+import { motion } from "motion/react";
+import React, { useState } from "react";
 import { useTheme } from "../../provider/page";
 
 interface TimelineEntry {
