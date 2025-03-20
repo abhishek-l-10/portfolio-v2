@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import {
   Star,
   Award,
@@ -99,9 +99,7 @@ const EducationSection = () => {
               key={index}
               variants={cardVariants}
               className={`relative border rounded-xl p-8 transition-all duration-300 ${
-                isDarkMode
-                  ? "bg-gray-900/50"
-                  : "bg-white/50"
+                isDarkMode ? "bg-gray-900/50" : "bg-white/50"
               } backdrop-blur-lg ${
                 hoveredIndex === index
                   ? "border-teal-500 scale-[1.05] shadow-lg"

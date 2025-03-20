@@ -1,6 +1,6 @@
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Briefcase, Calendar, Code } from "lucide-react";
-import React, { ReactNode } from "react";
+import { ReactNode } from "react";
 import { useTheme } from "../../provider/page";
 import { motion } from "framer-motion";
 

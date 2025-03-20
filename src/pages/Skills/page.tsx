@@ -1,4 +1,3 @@
-import React from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { useTheme } from "@/provider/page";
@@ -25,7 +24,19 @@ import {
 
 import { FaDocker, FaLinux } from "react-icons/fa";
 import { RiNextjsLine } from "react-icons/ri";
-import { SiTypescript, SiTailwindcss, SiPostgresql, SiMongodb, SiGraphql, SiJest, SiWebpack, SiRedux, SiFirebase, SiVercel, SiVite } from "react-icons/si";
+import {
+  SiTypescript,
+  SiTailwindcss,
+  SiPostgresql,
+  SiMongodb,
+  SiGraphql,
+  SiJest,
+  SiWebpack,
+  SiRedux,
+  SiFirebase,
+  SiVercel,
+  SiVite,
+} from "react-icons/si";
 import { BsFileEarmarkCode } from "react-icons/bs";
 import { TbBrandVscode } from "react-icons/tb";
 

@@ -1,4 +1,4 @@
-import React, { useState, FormEvent, ChangeEvent } from "react";
+import { useState, FormEvent, ChangeEvent } from "react";
 import { Send, Phone, MapPin, Mail, MessageCircle } from "lucide-react";
 import { useTheme } from "@/provider/page";
 
