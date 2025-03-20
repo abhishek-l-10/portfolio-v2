@@ -1,4 +1,3 @@
-import React from "react";
 import { useTheme } from "../../provider/page";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { dracula } from "react-syntax-highlighter/dist/esm/styles/prism";
@@ -8,7 +7,6 @@ import { FlipWords } from "../../components/ui/flip-words";
 import { BackgroundBeamsWithCollision } from "@/components/ui/background-beams-with-collision";
 import { Button } from "../../components/ui/moving-border";
 import { ShootingStars } from "../../components/ui/shooting-stars";
-import { cn } from "../../lib/utils";
 import config from "../../config/config";
 import { ArrowRightIcon } from "lucide-react";
 

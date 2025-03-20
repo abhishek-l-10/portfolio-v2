@@ -1,12 +1,5 @@
 import { useState } from "react";
-import {
-  Star,
-  Award,
-  Calendar,
-  BookOpen,
-  GraduationCap,
-  Trophy,
-} from "lucide-react";
+import { Award, Calendar, BookOpen, Trophy } from "lucide-react";
 import { motion } from "framer-motion";
 import { useTheme } from "@/provider/page";
 

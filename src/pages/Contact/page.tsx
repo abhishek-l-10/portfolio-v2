@@ -1,5 +1,5 @@
 import { useState, FormEvent, ChangeEvent } from "react";
-import { Send, Phone, MapPin, Mail, MessageCircle } from "lucide-react";
+import { Send, MapPin, Mail } from "lucide-react";
 import { useTheme } from "@/provider/page";
 
 interface FormData {
@@ -29,7 +29,6 @@ export default function Contact() {
 
   const [errors, setErrors] = useState<FormErrors>({});
   const [status, setStatus] = useState<string | null>(null);
-  const [isChatOpen, setIsChatOpen] = useState<boolean>(false);
 
   const validateForm = (): boolean => {
     let tempErrors: FormErrors = {};
