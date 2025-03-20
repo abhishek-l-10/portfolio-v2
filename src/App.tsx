@@ -1,4 +1,3 @@
-import React from "react";
 import { Routes, Route } from "react-router";
 import Hero from "./pages/Hero/page";
 import Header from "./pages/Header/page";
