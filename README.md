@@ -4,6 +4,7 @@ Check out the live preview of the portfolio website here:
 [Live Demo](https://codervai2.vercel.app/)
 
 Project Structure
+
 ![image](https://github.com/user-attachments/assets/b935deee-01c2-4704-8e81-90113bfd6640)
 
 ## Sections of the Portfolio
