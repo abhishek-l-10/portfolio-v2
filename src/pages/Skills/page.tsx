@@ -4,23 +4,19 @@ import { useTheme } from "@/provider/page";
 import { Marquee } from "@/components/magicui/marquee";
 import {
   Code2,
-  Paintbrush,
   Database,
   Layout,
   Cpu,
   Cloud,
-  Sparkles,
-  Layers,
   GitBranch,
   Server,
   Globe,
   FileCode,
   Figma,
-  Github,
   CloudCog,
 } from "lucide-react";
 
-import { FaDocker, FaLinux } from "react-icons/fa";
+import { FaDocker } from "react-icons/fa";
 import { RiNextjsLine } from "react-icons/ri";
 import {
   SiTypescript,
@@ -28,7 +24,6 @@ import {
   SiPostgresql,
   SiMongodb,
   SiGraphql,
-  SiJest,
   SiWebpack,
   SiPostman,
   SiRedux,

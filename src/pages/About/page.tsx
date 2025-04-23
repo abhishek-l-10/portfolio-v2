@@ -1,6 +1,5 @@
 import HeroImg from "../../assets/hero.jpg";
 import { useTheme } from "../../provider/page";
-import OlovaLogo from "../../assets/olova.png";
 
 export default function About() {
   const { theme } = useTheme();
