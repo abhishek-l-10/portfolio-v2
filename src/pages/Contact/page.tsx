@@ -71,7 +71,7 @@ export default function Contact() {
 
     // Create a new FormData object to send to Web3Forms API
     const form = new FormData();
-    form.append("access_key", "90f4b8af-e590-42b0-beaf-10b18f66a703"); // Replace with your Web3Forms access key
+    form.append("access_key", "258c2c3f-6a58-46b2-ae28-37c4941a698f"); // Replace with your Web3Forms access key
     form.append("name", formData.name);
     form.append("email", formData.email);
     form.append("subject", formData.subject || "New Contact Form Submission");
@@ -152,7 +152,7 @@ export default function Contact() {
                         isDarkMode ? "text-gray-400" : "text-gray-600"
                       }`}
                     >
-                      olovajs@gmail.com
+                      abhishekhegde03@gmail.com
                     </p>
                   </div>
                 </div>
@@ -168,7 +168,7 @@ export default function Contact() {
                         isDarkMode ? "text-gray-400" : "text-gray-600"
                       }`}
                     >
-                      Laxmipure, Natore 6400
+                      Mysuru, Karnataka, India
                     </p>
                   </div>
                 </div>

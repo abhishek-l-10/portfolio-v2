@@ -61,27 +61,26 @@ export default function ProfessionalJourney() {
           }}
         >
           <ExperienceCard
-            title="JavaScript Developer"
-            company="OlovJS (Sera Programmer)"
-            period="2023 - Present"
-            description="Contributed to developing JavaScript libraries and enhancing framework functionalities."
+            title="Intern"
+            company="BTF Technology"
+            period="04/2024 - 06/2024"
+            description="Developed technical skills in nestJs, GA4, and testing web applications. I also improved my ability to quickly learn new software tools through online resources and colleague guidance"
+            icon={<Briefcase />}
+          />
+          <ExperienceCard
+            title="Trainee Software Engineer"
+            company="BTF Technology"
+            period=" 07/2024 - 01/2025"
+            description="Equipped with the Electron.js framework and  developed the Myprism Desktop application."
+            icon={<Briefcase />}
+          />
+
+          <ExperienceCard
+            title="Junior Software Engineer"
+            company="BTF Technology"
+            period="02/2025 - Present"
+            description="Currently working with the Desktop Development Team"
             icon={<Code />}
-          />
-
-          <ExperienceCard
-            title="Junior Frontend Developer"
-            company="Sera Programmer"
-            period="2021 - 2023"
-            description="Assisted in building and optimizing user interfaces with a focus on responsive and interactive designs."
-            icon={<Briefcase />}
-          />
-
-          <ExperienceCard
-            title="WordPress Developer"
-            company="Fiverr"
-            period="2019 - 2020"
-            description="Worked on developing and customizing WordPress websites for clients globally."
-            icon={<Briefcase />}
           />
         </motion.div>
       </div>

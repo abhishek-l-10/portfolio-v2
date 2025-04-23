@@ -21,7 +21,7 @@ export default function About() {
               theme === "dark" ? "text-white" : "text-gray-900"
             }`}
           >
-            Developer, Designer, Creator, Innovator
+            Programmer, Developer, and a Engineer
           </h2>
           <div className="grid gap-6 sm:grid-cols-2 md:gap-12 lg:gap-24">
             <div className="relative mb-6 sm:mb-0">
@@ -57,16 +57,14 @@ export default function About() {
                   theme === "dark" ? "text-gray-300" : "text-gray-600"
                 }`}
               >
-                Hello! I'm Nazmul Hossain, a passionate JavaScript developer
-                specializing in creating innovative web solutions and
-                user-friendly interfaces.{" "}
-                <span
+                Hello! I'm Abhishek L, a passionate developer{" "}
+                {/* <span
                   className={`font-bold ${
                     theme === "dark" ? "text-white" : "text-gray-900"
                   }`}
                 >
                   As the creator of the OlovaJS UI Framework
-                </span>
+                </span> */}
                 , I'm dedicated to simplifying development workflows.
               </p>
               <p
@@ -74,13 +72,12 @@ export default function About() {
                   theme === "dark" ? "text-gray-300" : "text-gray-600"
                 }`}
               >
-                My focus is on making web development faster, easier, and
-                accessible to all developers. Currently, I'm expanding into
-                backend development to grow as a full-stack developer and create
-                seamless, robust web applications.
+                A Tech and Software enthusiast, always looking to enhance my
+                skills, I have the zeal to grab all the opportunities available
+                and work with at most dedication.
               </p>
 
-              <div className="pt-6">
+              {/* <div className="pt-6">
                 <blockquote
                   className={`border-l-4 ${
                     theme === "dark" ? "border-gray-700" : "border-gray-300"
@@ -104,7 +101,7 @@ export default function About() {
                         theme === "dark" ? "text-white" : "text-gray-900"
                       }`}
                     >
-                      Nazmul Hossain, Creator of 
+                      Nazmul Hossain, Creator of
                     </cite>
                     <div className="flex items-center gap-2">
                       <img
@@ -118,7 +115,7 @@ export default function About() {
                     </div>
                   </div>
                 </blockquote>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

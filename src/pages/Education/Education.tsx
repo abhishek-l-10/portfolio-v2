@@ -10,24 +10,30 @@ const EducationSection = () => {
 
   const educationData = [
     {
-      degree: "Secondary School Certificate (SSC)",
-      school: "Natore Textile Institute",
+      degree: "Bachelor of Engineering in Computer Science",
+      school: "Vidyavardhaka College Of Engineering",
       mascot: "📘",
-      year: "2019-2021",
-      achievements: ["GPA: 4.89", "Subject: Science"],
-      skills: ["Mathematics", "Physics", "Chemistry", "Biology"],
+      year: "2020-2024",
+      achievements: ["CGPA: 8.83"],
+      skills: [
+        "Data Structures",
+        "Algorithms",
+        "Operating Systems",
+        "Database Management Systems",
+        "Computer Networks",
+      ],
       description:
-        "Focused on core science subjects with emphasis on practical laboratory work and scientific research methodologies.",
+        "Studied core computer science subjects with hands-on experience in software development, data structures, and web technologies. Engaged in academic projects, hackathons, and seminars.",
     },
     {
-      degree: "Higher Secondary Certificate (HSC)",
-      school: "Dottopara Model Degree College",
+      degree: "Department Of Pre-University Education",
+      school: "Citizens PU college",
       mascot: "📗",
-      year: "2021-2023",
-      achievements: ["GPA: 4.25", "Subject: Arts"],
-      skills: ["Literature", "Social Studies", "Economics", "History"],
+      year: "20118-2020",
+      achievements: ["Pecentage: 93.83%", "Subject: PCMB"],
+      skills: ["Physics", "Chemistry", "Mathematics ", "Biology"],
       description:
-        "Developed strong analytical and critical thinking skills through comprehensive study of humanities and social sciences.",
+        "Developed a strong academic foundation in both theoretical and applied sciences, preparing for advanced studies in engineering and technology.",
     },
   ];
 
@@ -76,8 +82,7 @@ const EducationSection = () => {
               isDarkMode ? "text-gray-300" : "text-gray-700"
             }`}
           >
-            Discover how academic excellence shapes innovative thinking and
-            professional growth.
+            Academic excellence
           </p>
         </motion.div>
 

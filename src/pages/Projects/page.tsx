@@ -1,7 +1,7 @@
 import { Github, ExternalLink } from "lucide-react";
-import olova from "@/assets/projects/olova-B0FjVVEL.png";
-import portfolio from "@/assets/projects/Annotation 2025-03-20 155334.png";
-import codekori from "@/assets/projects/codekori.png";
+import portfolio1 from "@/assets/projects/porfolio1.png";
+import desktop from "@/assets/projects/desktop.png";
+import osl from "@/assets/projects/osl.png";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useTheme } from "@/provider/page";
 
@@ -19,41 +19,54 @@ const ProjectShowcase = () => {
 
   const projects = [
     {
-      title: "Olova! A Lightweight JavaScript Library",
+      title: "MyPortfolio-Website",
       description:
-        "Olova.js is a lightweight JavaScript library for building modern, reactive, and dynamic web applications. It features a simple, component-based architecture, enabling developers to create reusable and interactive UI elements with minimal code and overhead.",
-      tags: ["JavaScript", "Reactive", "Web Development"],
+        "Created and hosted a professional work portfolio on Netlify.app, showcasing skills and projects while facilitating user-friendly communication via Netlify’s form functionalities. Tech Stack: , , and  ",
+      tags: ["HTML5", "CSS3", "JavaScript"],
       links: {
-        github: "https://github.com/olovajs/olova",
-        demo: "https://olova.js.org/",
+        github: "",
+        demo: "https://codingboy03-myportfolio.netlify.app/",
       },
-      image: olova,
+      image: portfolio1,
       featured: true,
     },
     {
-      title:
-        "A sleek portfolio built with React and Tailwind CSS to showcase your skills",
+      title: "Desktop Based Personal-Voice-Assistant:",
       description:
-        "This portfolio is a sleek and modern showcase of my skills and projects. It's built with React and Tailwind CSS, providing a clean and professional look that reflects my professional brand.",
-      tags: ["React", "Tailwind CSS", "Portfolio", "Typescript"],
+        " Windows virtual assistant, powered by Python, supports visually impaired users with voice input/output, employing voice recognition and language processing technologies.The personal assistant aids users with conversation, web searches, media playback, weather updates, and reminders, leveraging a speaking rate of 150 WPM compared to the typical 40 WPM writing rate",
+      tags: [
+        "Pyttsx3",
+        "Pyaudio",
+        "Python",
+        "Typescript",
+        "Visual Studio Code",
+        "Speech Recognition",
+      ],
       links: {
-        github: "https://github.com/seraprogrammer/portfolio",
-        demo: "https://codervai.vercel.app/",
+        github:
+          "https://github.com/abhishek-l-10/Desktop_based_Personal_Voice_Assistant",
+        demo: "",
       },
-      image: portfolio,
+      image: desktop,
       featured: true,
     },
     {
-      title:
-        "CodeKori is an open-source online code editor with built-in AI, completely free to use",
+      title: "OSL Log Book(Open Source)",
       description:
-        "This portfolio is a sleek and modern showcase of my skills and projects. It's built with React and Tailwind CSS, providing a clean and professional look that reflects my professional brand.",
-      tags: ["React", "Tailwind CSS", "Portfolio", "Typescript"],
+        "The OSL Digital Logbook is a project developed to enable users to log their entries using a digital logbook. It is designed specifically for Open Source Lab (OSL) and can improvised to use for any entry system with minor changes in the code. The logbook allows users to scan a QR code and log their entry into the lab. Before logging in, users must first register using a domain-specific email and verify their registration using OTP. The project is built using Node.js and MongoDB.",
+      tags: [
+        "NodeJS",
+        "OTP Verification",
+        "MongoDB",
+        "Nodemailer",
+        "Azure Cloud",
+        "JavaScript",
+      ],
       links: {
-        github: "https://github.com/seraprogrammer/CodeKori",
-        demo: "https://codekori.js.org/",
+        github: "https://github.com/asymmentric/osllogbook",
+        demo: "",
       },
-      image: codekori,
+      image: osl,
       featured: true,
     },
   ];

@@ -99,17 +99,21 @@ export default function Hero() {
               <p className="mt-6 text-2xl">{config.information.title}</p>
 
               <div className="mt-8 flex space-x-4">
-                <a
-                  href="#"
-                  className="bg-transparent text-blue-400  hover:bg-opacity-30 transition duration-300 cursor-pointer"
-                >
-                  <Button className="cursor-pointer">Learn More</Button>
-                </a>
+                <Button>
+                  <a
+                    href="https://drive.google.com/file/d/1-m_cRB5b6i1FtrcI_dN-_aG3NGGUW73R/view?usp=drive_link"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="relative z-50 bg-transparent text-blue-400 hover:bg-opacity-30 transition duration-300 cursor-pointer"
+                  >
+                    Get Resume
+                  </a>
+                </Button>
                 <a
                   href="#"
                   className="bg-transparent border border-gray-700 text-gray-400 hover:border-gray-600 hover:text-gray-300 py-2 px-6 transition duration-300 flex items-center justify-center rounded-full cursor-pointer"
                 >
-                  Get Resume
+                  Learn More
                 </a>
               </div>
             </div>
